@@ -25,6 +25,7 @@ function App() {
   const { data, isPending, refetch, error } = useQuery({
     queryKey: ["comments", id],
     queryFn: () => getComments(id),
+    staleTime: 1000 * 60 * 5, // 5 minutes - time to GET the data in the cache, after that it will call the queryFn again
   });
 
   if (error) return <div>Error: {error.message}</div>;
